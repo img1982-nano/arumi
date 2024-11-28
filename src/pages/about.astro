@@ -1,0 +1,66 @@
+---
+import "../styles/global.css"
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "WhyAzilamo?🤔"
+//自己紹介の変数
+const identity = {
+    firstName: "Azilamo",
+    country: "日本",
+    occupation: ["初心者自称プログラマー", "学生"],
+    hobbies: ["マイクラ", "FPS", "散歩"],
+};
+
+const skills = ["HTML", "CSS", "Svelte(少し)"];
+const fine = true;
+const finished = false;
+const goal = 3;
+// Color変数
+const skillColor = "navy"
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} >
+    <title>{pageTitle}</title>
+    <style define:vars={{skillColor}}>
+        h1 {
+            color: brown;
+            font-size: 4rem;
+        }
+        .skill{
+            color: var(--skillColor);
+            font-wight: bold;
+        }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <h1>Why Azilamo? 🤔</h1>
+    <h2>私についてとこのサイトについて</h2>
+
+    <p>このサイトは、AstroDocsのチュートリアルをするために作成されました</p>
+
+    <p>このサイトは、チュートリアルが進むたびに更新されます。</p>
+    <p>私について</p>
+    <ul>
+        <li>名前:{identity.firstName}</li>
+        <li>国:{identity.country}</li>
+        <li>職業:{identity.occupation[0]},{identity.occupation[1]}</li>
+        <li>趣味:{identity.hobbies[0]},{identity.hobbies[1]},{identity.hobbies[2]}</li>
+    </ul>
+    <p>スキル</p>
+    <ul>
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+    {fine && <p>Im fine!! 私は元気です</p>}
+
+    {finished && <p>I finished this tutorial! このチュートリアルを終えました！</p>}
+
+    {goal === 3 ? <p>My goal is to finish in 3 days. 3日で終えるのが目標です。</p> : <p>My goal is not 3 days. 3日が目標ではありません。</p>}
+  </body>
+</html>
